@@ -39,6 +39,9 @@
     <property name="text">
      <string>Connect</string>
     </property>
+    <property name="shortcut">
+     <string>C</string>
+    </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -183,6 +186,9 @@
     <property name="text">
      <string>Stop</string>
     </property>
+    <property name="shortcut">
+     <string>S</string>
+    </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
@@ -262,6 +268,9 @@
     <property name="text">
      <string>Force Kill</string>
     </property>
+    <property name="shortcut">
+     <string>K</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_n30s">
     <property name="geometry">
@@ -274,6 +283,9 @@
     </property>
     <property name="text">
      <string>-30 secs</string>
+    </property>
+    <property name="shortcut">
+     <string>Left</string>
     </property>
     <property name="autoRepeat">
      <bool>true</bool>
@@ -294,6 +306,9 @@
     <property name="text">
      <string>+30 secs</string>
     </property>
+    <property name="shortcut">
+     <string>Right</string>
+    </property>
     <property name="autoRepeat">
      <bool>true</bool>
     </property>
@@ -312,6 +327,9 @@
     </property>
     <property name="text">
      <string>-10 mins</string>
+    </property>
+    <property name="shortcut">
+     <string>Down</string>
     </property>
     <property name="autoRepeat">
      <bool>true</bool>
@@ -332,6 +350,9 @@
     <property name="text">
      <string>+10 mins</string>
     </property>
+    <property name="shortcut">
+     <string>Up</string>
+    </property>
     <property name="autoRepeat">
      <bool>true</bool>
     </property>
@@ -350,6 +371,9 @@
     </property>
     <property name="text">
      <string>Pause</string>
+    </property>
+    <property name="shortcut">
+     <string>Space</string>
     </property>
     <property name="autoRepeat">
      <bool>true</bool>
