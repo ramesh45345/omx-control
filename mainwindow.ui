@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>471</width>
-    <height>491</height>
+    <width>400</width>
+    <height>461</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -237,14 +237,17 @@
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>170</y>
+      <x>120</x>
+      <y>270</y>
       <width>66</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
      <string>Controls</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_kill">
@@ -260,13 +263,108 @@
      <string>Force Kill</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_n30s">
+    <property name="geometry">
+     <rect>
+      <x>63</x>
+      <y>292</y>
+      <width>86</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-30 secs</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoRepeatDelay">
+     <number>1000</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_p30s">
+    <property name="geometry">
+     <rect>
+      <x>155</x>
+      <y>292</y>
+      <width>86</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>+30 secs</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoRepeatDelay">
+     <number>1000</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_n10m">
+    <property name="geometry">
+     <rect>
+      <x>63</x>
+      <y>326</y>
+      <width>86</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-10 mins</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoRepeatDelay">
+     <number>1000</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_p10m">
+    <property name="geometry">
+     <rect>
+      <x>155</x>
+      <y>326</y>
+      <width>86</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>+10 mins</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoRepeatDelay">
+     <number>1000</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_pause">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>360</y>
+      <width>86</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Pause</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoRepeatDelay">
+     <number>1000</number>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>471</width>
+     <width>400</width>
      <height>25</height>
     </rect>
    </property>

@@ -19,6 +19,12 @@ public:
 private slots:
     void on_pushButton_connect_clicked();
     void on_pushButton_stop_clicked();
+    void on_pushButton_kill_clicked();
+    void on_pushButton_pause_clicked();
+    void on_pushButton_n30s_pressed();
+    void on_pushButton_p30s_pressed();
+    void on_pushButton_n10m_pressed();
+    void on_pushButton_p10m_pressed();
 
 private:
     Ui::MainWindow *ui;
