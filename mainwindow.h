@@ -25,10 +25,12 @@ private slots:
     void on_pushButton_p30s_pressed();
     void on_pushButton_n10m_pressed();
     void on_pushButton_p10m_pressed();
+    void on_lineEdit_dragdropurl_textEdited();
 
 private:
     Ui::MainWindow *ui;
     QProcess* sshprocess;
+
     void gencommand_play(QString &commandline);
     void gencommand_ssh(QString &command, QStringList &sshcommand);
 };

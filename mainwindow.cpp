@@ -112,3 +112,9 @@ void MainWindow::on_pushButton_p10m_pressed()
 {
     sshprocess->write("^[[A");
 }
+
+void MainWindow::on_lineEdit_dragdropurl_textEdited()
+{
+    ui->plainTextEdit_url->setPlainText(ui->lineEdit_dragdropurl->text());
+    ui->lineEdit_dragdropurl->clear();
+}

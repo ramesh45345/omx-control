@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>461</height>
+    <height>502</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>85</x>
-      <y>20</y>
+      <y>16</y>
       <width>191</width>
       <height>28</height>
      </rect>
@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>20</y>
+      <y>17</y>
       <width>86</width>
       <height>28</height>
      </rect>
@@ -47,7 +47,7 @@
     <property name="geometry">
      <rect>
       <x>15</x>
-      <y>22</y>
+      <y>18</y>
       <width>66</width>
       <height>20</height>
      </rect>
@@ -66,7 +66,7 @@
     <property name="geometry">
      <rect>
       <x>85</x>
-      <y>50</y>
+      <y>46</y>
       <width>191</width>
       <height>28</height>
      </rect>
@@ -79,7 +79,7 @@
     <property name="geometry">
      <rect>
       <x>15</x>
-      <y>53</y>
+      <y>49</y>
       <width>66</width>
       <height>20</height>
      </rect>
@@ -98,7 +98,7 @@
     <property name="geometry">
      <rect>
       <x>85</x>
-      <y>80</y>
+      <y>76</y>
       <width>191</width>
       <height>28</height>
      </rect>
@@ -111,7 +111,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>83</y>
+      <y>79</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -130,9 +130,9 @@
     <property name="geometry">
      <rect>
       <x>86</x>
-      <y>120</y>
+      <y>106</y>
       <width>191</width>
-      <height>70</height>
+      <height>81</height>
      </rect>
     </property>
    </widget>
@@ -140,7 +140,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>120</y>
+      <y>116</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -159,7 +159,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>220</y>
+      <y>267</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -178,23 +178,23 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>60</y>
+      <y>57</y>
       <width>86</width>
       <height>28</height>
      </rect>
     </property>
     <property name="text">
-     <string>Stop</string>
+     <string>Stop/Quit</string>
     </property>
     <property name="shortcut">
-     <string>S</string>
+     <string>Q</string>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>200</y>
+      <y>247</y>
       <width>161</width>
       <height>57</height>
      </rect>
@@ -244,7 +244,7 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>270</y>
+      <y>317</y>
       <width>66</width>
       <height>20</height>
      </rect>
@@ -260,7 +260,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>100</y>
+      <y>97</y>
       <width>86</width>
       <height>28</height>
      </rect>
@@ -276,7 +276,7 @@
     <property name="geometry">
      <rect>
       <x>63</x>
-      <y>292</y>
+      <y>339</y>
       <width>86</width>
       <height>28</height>
      </rect>
@@ -298,7 +298,7 @@
     <property name="geometry">
      <rect>
       <x>155</x>
-      <y>292</y>
+      <y>339</y>
       <width>86</width>
       <height>28</height>
      </rect>
@@ -320,7 +320,7 @@
     <property name="geometry">
      <rect>
       <x>63</x>
-      <y>326</y>
+      <y>373</y>
       <width>86</width>
       <height>28</height>
      </rect>
@@ -342,7 +342,7 @@
     <property name="geometry">
      <rect>
       <x>155</x>
-      <y>326</y>
+      <y>373</y>
       <width>86</width>
       <height>28</height>
      </rect>
@@ -364,7 +364,7 @@
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>360</y>
+      <y>407</y>
       <width>86</width>
       <height>28</height>
      </rect>
@@ -380,6 +380,38 @@
     </property>
     <property name="autoRepeatDelay">
      <number>1000</number>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_dragdropurl">
+    <property name="geometry">
+     <rect>
+      <x>26</x>
+      <y>191</y>
+      <width>251</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="whatsThis">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(136, 138, 133);
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="placeholderText">
+     <string>Drag and Drop or Paste URL here</string>
+    </property>
+    <property name="cursorMoveStyle">
+     <enum>Qt::LogicalMoveStyle</enum>
     </property>
    </widget>
   </widget>
