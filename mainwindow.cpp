@@ -23,6 +23,38 @@ MainWindow::~MainWindow()
 
 void MainWindow::gencommand_play(QString &commandline)
 {
+    // Get time
+    QString time = genstring_time();
+
+    // Process url
+    QString url = genstring_baseurl();
+
+    // Create command line to send through ssh.
+    commandline = "yt "+url+" "+time;
+}
+
+void MainWindow::gencommand_localplay(QString &commandline)
+{
+    // Get time
+    QString time = genstring_time();
+    // Process url
+    QString url = genstring_baseurl();
+
+    // Run the command.
+    QProcess ytdl_process;
+    ytdl_process.start("youtube-dl", QStringList() <<"-g"<<"-f"<<"best"<<url);
+    ytdl_process.waitForFinished(30000);
+    QString ytdl_omxurl = ytdl_process.readAllStandardOutput();
+    ytdl_omxurl = ytdl_omxurl.trimmed();
+    QString ytdl_error = ytdl_process.readAllStandardError();
+    qDebug() << ytdl_error;
+
+    // Create command line to send through ssh.
+    commandline = "omxplayer -o both \'"+ytdl_omxurl+"\' -l "+time;
+}
+
+QString MainWindow::genstring_time()
+{
     // Process numbers for timestamp.
     QString hours = ui->spinBox_hrs->text();
     hours = hours.rightJustified(2, '0');
@@ -31,16 +63,18 @@ void MainWindow::gencommand_play(QString &commandline)
     QString secs = ui->spinBox_secs->text();
     secs = secs.rightJustified(2, '0');
 
+    return hours+":"+mins+":"+secs;
+}
+
+QString MainWindow::genstring_baseurl()
+{
     // Process url
-    QString url = ui->plainTextEdit_url->toPlainText();
+    QString url;
+    url = ui->plainTextEdit_url->toPlainText();
     // Remove everything after the & symbol.
     QStringList url_list = url.split('&');
-    qDebug() << url_list;
     url = url_list[0];
-
-    // Create command line to send through ssh.
-    commandline = "yt "+url+" "+hours+":"+mins+":"+secs;
-    qDebug() << commandline;
+    return url;
 }
 
 void MainWindow::gencommand_ssh(QString &command, QStringList &sshcommand)
@@ -49,9 +83,17 @@ void MainWindow::gencommand_ssh(QString &command, QStringList &sshcommand)
     QString server = ui->lineEdit_server->text();
     QString port = ui->lineEdit_port->text();
     QString username = ui->lineEdit_user->text();
-
+    // Add variables to ssh command.
     sshcommand = QStringList()<<"-p"<<port<<"-t"<<"-l"<<username<<server<<command;
-    qDebug() << sshcommand;
+}
+
+void MainWindow::sendcommand_ssh(QStringList &command)
+{
+    // Start ssh with parameters.
+    // https://stackoverflow.com/questions/20743793/how-to-detect-when-ssh-connection-over-a-qprocess-has-finished
+    qDebug() << command;
+    sshprocess = new QProcess();
+    sshprocess->start("ssh", command);
 }
 
 void MainWindow::on_pushButton_connect_clicked()
@@ -62,11 +104,8 @@ void MainWindow::on_pushButton_connect_clicked()
     gencommand_play(localcommand);
     // Generate the ssh command.
     gencommand_ssh(localcommand, sshcommand);
-
-    // Start ssh with parameters.
-    // https://stackoverflow.com/questions/20743793/how-to-detect-when-ssh-connection-over-a-qprocess-has-finished
-    sshprocess = new QProcess();
-    sshprocess->start("ssh", sshcommand);
+    // Send the ssh command.
+    sendcommand_ssh(sshcommand);
 }
 
 void MainWindow::on_pushButton_stop_clicked()
@@ -84,8 +123,7 @@ void MainWindow::on_pushButton_kill_clicked()
     gencommand_ssh(kill_command, sshcmd);
 
     // Start ssh with parameters.
-    sshprocess = new QProcess();
-    sshprocess->start("ssh", sshcmd);
+    sendcommand_ssh(sshcmd);
 }
 
 void MainWindow::on_pushButton_pause_clicked()
@@ -117,4 +155,16 @@ void MainWindow::on_lineEdit_dragdropurl_textEdited()
 {
     ui->plainTextEdit_url->setPlainText(ui->lineEdit_dragdropurl->text());
     ui->lineEdit_dragdropurl->clear();
+}
+
+void MainWindow::on_pushButton_localconnect_clicked()
+{
+    QString localcommand;
+    QStringList sshcommand;
+    // Generate the play command.
+    gencommand_localplay(localcommand);
+    // Generate the ssh command.
+    gencommand_ssh(localcommand, sshcommand);
+    // Send the ssh command.
+    sendcommand_ssh(sshcommand);
 }
