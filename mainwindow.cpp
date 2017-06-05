@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QProcess>
 #include <QDebug>
 #include <QShortcut>
 
@@ -9,15 +8,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    // Read Stored Settings.
+    readSettings();
     // Set window title.
     setWindowTitle(tr("omx-control"));
-    ui->lineEdit_server->setText("raspberrypi");
-    ui->lineEdit_port->setText("22");
-    ui->lineEdit_user->setText("pi");
 }
 
 MainWindow::~MainWindow()
 {
+    // Write modified settings.
+    writeSettings();
     delete ui;
 }
 
@@ -167,4 +167,42 @@ void MainWindow::on_pushButton_localconnect_clicked()
     gencommand_ssh(localcommand, sshcommand);
     // Send the ssh command.
     sendcommand_ssh(sshcommand);
+}
+
+void MainWindow::writeSettings()
+{
+    // Construct settings, ini only.
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope, ORGNAME, APPNAME);
+    settings.beginGroup("MainWindow");
+    // Window size and position.
+    settings.setValue("size", size());
+    settings.setValue("pos", pos());
+    // Server, port, user, and url.
+    settings.setValue("server", ui->lineEdit_server->text());
+    settings.setValue("port", ui->lineEdit_port->text());
+    settings.setValue("user", ui->lineEdit_user->text());
+    settings.setValue("url", ui->plainTextEdit_url->toPlainText());
+    settings.endGroup();
+}
+
+void MainWindow::readSettings()
+{
+    // Construct settings, ini only.
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope, ORGNAME, APPNAME);
+    settings.beginGroup("MainWindow");
+    // Window size and position.
+    QSize size = settings.value("size").toSize();
+    // Resize only if non-default settings detected.
+    if(size != QSize(-1, -1))
+        resize(size);
+    QPoint point = settings.value("pos").toPoint();
+    // Move only if non-default settings detected.
+    if(point != QPoint(0,0))
+        move(point);
+    // Server, port, user, and url.
+    ui->lineEdit_server->setText(settings.value("server").toString());
+    ui->lineEdit_port->setText(settings.value("port", "22").toString());
+    ui->lineEdit_user->setText(settings.value("user").toString());
+    ui->plainTextEdit_url->setPlainText(settings.value("url").toString());
+    settings.endGroup();
 }

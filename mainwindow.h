@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include <QProcess>
+#include <QSettings>
+
+#define APPNAME "omx-control"
+#define ORGNAME "omx-control"
 
 namespace Ui {
 class MainWindow;
@@ -26,7 +30,6 @@ private slots:
     void on_pushButton_n10m_pressed();
     void on_pushButton_p10m_pressed();
     void on_lineEdit_dragdropurl_textEdited();
-
     void on_pushButton_localconnect_clicked();
 
 private:
@@ -38,6 +41,8 @@ private:
     void sendcommand_ssh(QStringList &command);
     QString genstring_time();
     QString genstring_baseurl();
+    void writeSettings();
+    void readSettings();
 };
 
 #endif // MAINWINDOW_H
