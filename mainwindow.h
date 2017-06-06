@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QProcess>
 #include <QSettings>
+#include <QTimer>
 
 #define APPNAME "omx-control"
 #define ORGNAME "omx-control"
@@ -21,7 +22,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_connect_clicked();
     void on_pushButton_stop_clicked();
     void on_pushButton_kill_clicked();
     void on_pushButton_pause_clicked();
@@ -31,11 +31,11 @@ private slots:
     void on_pushButton_p10m_pressed();
     void on_lineEdit_dragdropurl_textEdited();
     void on_pushButton_localconnect_clicked();
+    void update_stdout();
 
 private:
     Ui::MainWindow *ui;
-    QProcess* sshprocess;
-    void gencommand_play(QString &commandline);
+    QProcess* sshprocess = new QProcess();
     void gencommand_localplay(QString &commandline);
     void gencommand_ssh(QString &command, QStringList &sshcommand);
     void sendcommand_ssh(QStringList &command);

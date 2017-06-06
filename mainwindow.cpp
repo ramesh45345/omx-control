@@ -21,18 +21,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::gencommand_play(QString &commandline)
-{
-    // Get time
-    QString time = genstring_time();
-
-    // Process url
-    QString url = genstring_baseurl();
-
-    // Create command line to send through ssh.
-    commandline = "yt "+url+" "+time;
-}
-
 void MainWindow::gencommand_localplay(QString &commandline)
 {
     // Get time
@@ -91,21 +79,14 @@ void MainWindow::sendcommand_ssh(QStringList &command)
 {
     // Start ssh with parameters.
     // https://stackoverflow.com/questions/20743793/how-to-detect-when-ssh-connection-over-a-qprocess-has-finished
-    qDebug() << command;
+    // Output command to debug log.
+    ui->textEdit_debugout->setText(command.join(" "));
     sshprocess = new QProcess();
+    // Merge the Standard Output and Standard Error process channels.
+    sshprocess->setProcessChannelMode(QProcess::MergedChannels);
+    // Print the standard output when a message is ready.
+    connect(sshprocess, SIGNAL(readyReadStandardOutput()), this, SLOT(update_stdout()));
     sshprocess->start("ssh", command);
-}
-
-void MainWindow::on_pushButton_connect_clicked()
-{
-    QString localcommand;
-    QStringList sshcommand;
-    // Generate the play command.
-    gencommand_play(localcommand);
-    // Generate the ssh command.
-    gencommand_ssh(localcommand, sshcommand);
-    // Send the ssh command.
-    sendcommand_ssh(sshcommand);
 }
 
 void MainWindow::on_pushButton_stop_clicked()
@@ -205,4 +186,11 @@ void MainWindow::readSettings()
     ui->lineEdit_user->setText(settings.value("user").toString());
     ui->plainTextEdit_url->setPlainText(settings.value("url").toString());
     settings.endGroup();
+}
+
+void MainWindow::update_stdout()
+{
+    // Output the standard output to the stdout box.
+    QString stdout = sshprocess->readAllStandardOutput();
+    ui->textEdit_stdout->setText(stdout);
 }

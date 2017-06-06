@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>502</height>
+    <width>484</width>
+    <height>512</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,28 +25,6 @@
     </property>
     <property name="whatsThis">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_connect">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>17</y>
-      <width>86</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="text">
-     <string>Connect</string>
-    </property>
-    <property name="shortcut">
-     <string>V</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -183,8 +161,8 @@
    <widget class="QPushButton" name="pushButton_stop">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>113</y>
+      <x>378</x>
+      <y>15</y>
       <width>86</width>
       <height>28</height>
      </rect>
@@ -265,9 +243,9 @@
    <widget class="QPushButton" name="pushButton_kill">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>150</y>
-      <width>86</width>
+      <x>379</x>
+      <y>49</y>
+      <width>81</width>
       <height>28</height>
      </rect>
     </property>
@@ -423,9 +401,9 @@ color: rgb(255, 255, 255);</string>
    <widget class="QPushButton" name="pushButton_localconnect">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>50</y>
-      <width>101</width>
+      <x>287</x>
+      <y>15</y>
+      <width>81</width>
       <height>28</height>
      </rect>
     </property>
@@ -433,11 +411,67 @@ color: rgb(255, 255, 255);</string>
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text">
-     <string>Local Connect</string>
+     <string>Connect</string>
     </property>
     <property name="shortcut">
      <string>C</string>
     </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>90</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+      <underline>true</underline>
+     </font>
+    </property>
+    <property name="text">
+     <string>Status Info</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>287</x>
+      <y>110</y>
+      <width>181</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>Command Output:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="textEdit_stdout"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Input to SSH:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="textEdit_debugout"/>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -445,7 +479,7 @@ color: rgb(255, 255, 255);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>484</width>
      <height>25</height>
     </rect>
    </property>
